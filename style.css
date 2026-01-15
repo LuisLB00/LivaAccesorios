@@ -568,7 +568,7 @@ footer{ text-align:center; padding:20px; background:#f5f5f5; margin-top:50px; co
 
 /* LOGO IMAGEN */
 .logo img {
-  height: 100px;
+  height: 50px;
   width: auto;
 }
 
@@ -738,4 +738,29 @@ footer{ text-align:center; padding:20px; background:#f5f5f5; margin-top:50px; co
   margin: 5px 0 0 22px;
   color: #666;
   font-size: 13px;
+}
+/* Logo adicional a la derecha */
+.logo-derecha {
+  margin-left: auto; /* Empuja el logo hacia la derecha */
+}
+
+.logo-derecha img {
+  height: 50px; /* Ajusta el tamaño según necesites */
+  width: auto;
+  object-fit: contain;
+}
+
+/* Asegurar distribución del header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logo-derecha img {
+    height: 35px; /* Más pequeño en móviles */
+  }
 }
