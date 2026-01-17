@@ -54,12 +54,12 @@
               margin-top: 12px;
               display: none;
               text-align: center;">
-    <strong style="color: #D4AF37; font-size: 0.95rem; display: block; margin-bottom: 6px;">🎓 ¿Eres estudiante?</strong>
+    <strong style="color: #D4AF37; font-size: 0.95rem; display: block; margin-bottom: 6px;">Precio Promocional</strong>
     <p style="margin: 0; color: #333; font-size: 0.85rem;">
       Precio: <strong style="color: #000; font-size: 1.1rem;" id="precioEstudianteBox">S/ 45</strong>
     </p>
     <p style="font-size: 0.75rem; color: #666; margin: 6px 0 0 0; line-height: 1.3;">
-      📝 Envía tu código de estudiante o carnet para hacer valido tu descuento.
+      📝 Incluye envio y grabado gratis!
     </p>
   </div>
 </div>
@@ -106,12 +106,11 @@
   </div>
 
       <p class="link-talla" id="linkTalla">
-        🤔 ¿No sabes tu talla?
-        <a href="https://sunmy8.github.io/MedidordeAnillos/" target="_blank">Haz clic aquí para medirla</a>
+        🤔 ¿No sabes tu talla? Escribinos y te ayudaremos 😊
+        <a href="https://api.whatsapp.com/send/?phone=51924948674&text=Necesito+ayuda+para+calcular+mi+talla&type=phone_number&app_absent=0" target="_blank">Haz clic aquí para medirla</a>
       </p>
 
       <div class="botones-detalle">
-        <button class="btn-compra" id="btnDetalleEntrega">Pago contra entrega</button>
         <button class="btn-compra" id="btnDetalleComprar">Comprar ahora</button>
         <button class="btn-volver" id="btnVolverCatalogo">← Volver al catálogo</button>
       </div>
@@ -212,13 +211,9 @@
     <!-- ===== COLUMNA IZQUIERDA ===== -->
     <div class="checkout-form">
 
-      <h2>Contacto</h2>
-      <input type="email" id="checkoutCorreo" class="input-field" placeholder="Correo electrónico">
-
       <h2>Entrega</h2>
       <input type="text" id="checkoutNombre" class="input-field" placeholder="Nombre">
       <input type="text" id="checkoutApellido" class="input-field" placeholder="Apellidos">
-      <input type="text" id="checkoutDireccion" class="input-field" placeholder="Dirección">
       <input type="tel" id="checkoutTelefono" class="input-field" placeholder="Teléfono">
 
       <br><select id="checkoutRegion">
@@ -243,21 +238,21 @@
 <span id="envioTexto">GRATIS 🚚</span>
 
 
-<h2>Tipo de cliente</h2>
+<h2>Personalizado</h2>
 
 <label style="display: block; margin-bottom: 10px;">
-  <input type="radio" name="tipoCliente" value="regular" checked> Cliente regular
+  <input type="radio" name="tipoCliente" value="regular" checked> Sin grabado
 </label>
 
 <label style="display: block; margin-bottom: 10px;">
-  <input type="radio" name="tipoCliente" value="estudiante"> Estudiante
+  <input type="radio" name="tipoCliente" value="estudiante"> Con grabado
 </label>
 
 <div id="campoCodigoEstudiante" style="display:none; margin: 15px 0;">
-  <input type="text" id="codigoEstudiante" class="input-field" 
-         placeholder="Ingresa tu código de estudiante o N° de carnet">
   <small style="color: #666; display: block; margin-top: 5px;">
-    📸 Adjunta foto de tu carnet por WhatsApp para validar
+    ✨ <strong>Grabado personalizado</strong> ✨<br>
+    Si deseas agregar grabado láser, solicitamos un <strong>adelanto de solo S/ 20</strong>, ya que tu pieza se envía al taller para personalizarla especialmente para ti.  
+    Este monto garantiza tu pedido y forma parte del precio final 💍
   </small>
 </div>
 
@@ -308,10 +303,11 @@
 
   <hr>
 
-  <p class="total">
-    Total: <span id="checkoutTotal"></span><br>
-    <small>(Adelanto <span id="checkoutAdelanto">S/ 20</span>)</small>
-  </p>
+<p class="total" id="bloqueAdelanto" style="display:none;">
+  Total: <span id="checkoutTotal"></span><br>
+  <small>(Adelanto <span id="checkoutAdelanto">S/ 20</span>)</small>
+</p>
+
 
   <button id="btnFinalizarWhatsApp" class="btn-principal">
     💬 Finalizar pedido por WhatsApp
@@ -1722,7 +1718,25 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
   
+  
 });
+
+  const radiosGrabado = document.querySelectorAll('input[name="tipoCliente"]');
+  const campoGrabado = document.getElementById("campoCodigoEstudiante");
+  const bloqueAdelanto = document.getElementById("bloqueAdelanto");
+
+  radiosGrabado.forEach(radio => {
+    radio.addEventListener("change", function () {
+      if (this.value === "estudiante") { // Con grabado
+        campoGrabado.style.display = "block";
+        bloqueAdelanto.style.display = "block";
+      } else { // Sin grabado
+        campoGrabado.style.display = "none";
+        bloqueAdelanto.style.display = "none";
+      }
+    });
+  });
+
 </script>
 
 </body>
